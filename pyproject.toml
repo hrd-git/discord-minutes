@@ -1,0 +1,30 @@
+[project]
+name = "discord-minutes"
+version = "0.1.0"
+description = "Discord VC recorder with per-user timeline transcripts"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "py-cord[voice]>=2.8.0",
+    "davey",
+    "python-dotenv",
+    "numpy",
+]
+
+[project.scripts]
+minutes-bot = "discord_minutes.bot:main"
+minutes-transcribe = "discord_minutes.transcribe:main"
+
+[tool.poetry]
+packages = [{ include = "discord_minutes", from = "src" }]
+
+[tool.poetry.group.asr]
+optional = true
+
+[tool.poetry.group.asr.dependencies]
+faster-whisper = "*"
+nvidia-cublas-cu12 = "*"
+nvidia-cudnn-cu12 = "*"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

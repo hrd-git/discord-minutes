@@ -1,0 +1,5 @@
+.env
+recordings/
+.venv/
+__pycache__/
+models/
